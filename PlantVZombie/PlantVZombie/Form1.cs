@@ -12,9 +12,34 @@ namespace PlantVZombie
 {
     public partial class Form1 : Form
     {
+        Random rand = new Random();
+        List<PictureBox> foods = new List<PictureBox>();
         public Form1()
         {
             InitializeComponent();
+        }
+
+        private void MakePictureBox()
+        {
+            PictureBox food = new PictureBox();
+            food.Height = 20;
+            food.Width = 20;
+            food.BackColor = Color.Red;
+
+            int x = rand.Next(10, this.ClientSize.Width - food.Width);
+            int y = rand.Next(10, this.ClientSize.Height- food.Height);
+            food.Location = new Point(x, y);
+            //food.Image = deadplant.png;
+            food.Click += food_Click;
+
+            foods.Add(food);
+            this.Controls.Add(food);
+
+        }
+
+        private void food_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         /// <summary>
@@ -46,6 +71,12 @@ namespace PlantVZombie
                 return true;
             }
             return base.ProcessCmdKey(ref msg, keyData);
+        }
+
+        private void TimerEvent(object sender, EventArgs e)
+        {
+            MakePictureBox();
+
         }
     }
 }

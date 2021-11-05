@@ -29,10 +29,12 @@ namespace PlantVZombie
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pointsLabel = new System.Windows.Forms.Label();
             this.pointsText = new System.Windows.Forms.TextBox();
+            this.gameTimer = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -65,6 +67,11 @@ namespace PlantVZombie
             this.pointsText.Size = new System.Drawing.Size(100, 26);
             this.pointsText.TabIndex = 2;
             // 
+            // gameTimer
+            // 
+            this.gameTimer.Enabled = true;
+            this.gameTimer.Tick += new System.EventHandler(this.TimerEvent);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -88,6 +95,7 @@ namespace PlantVZombie
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label pointsLabel;
         private System.Windows.Forms.TextBox pointsText;
+        private System.Windows.Forms.Timer gameTimer;
     }
 }
 
